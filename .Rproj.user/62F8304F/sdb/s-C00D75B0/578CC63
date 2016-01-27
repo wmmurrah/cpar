@@ -1,0 +1,17 @@
+{
+    "contents" : "#' Intent to treat regression\n#' @param mira mira object from `mice` package\n#' @param n.obs Number of observations\n#' @author William Murrah\n#' @export\n\nrequire(texreg)\n# First, create a class definition for your regression objects(midslm):\nsetClass(Class=\"miralm\",\n         representation=representation(\n           names=\"character\",\n           coef=\"numeric\",\n           se=\"numeric\",\n           pval=\"numeric\",\n           rsq=\"numeric\",\n           adjrs=\"numeric\",\n           n=\"numeric\"\n         )\n)\n\nmiralm <- function(mira,n.obs=n) {\n  require(mice)\n  if (!is.mira(mira))\n    stop(\"The object must have class 'mira'\")\n  mod <- mira\n  pmod <- pool(mod)\n  spmod <- summary(pmod)\n  n <- n.obs\n  coef.names <- dimnames(spmod)[[1]]\n  coef <- spmod[ ,1]\n  se <- spmod[ ,2]\n  pvalues <- spmod[ ,5]\n  gof.names <- character()\n  rs <- round(pool.r.squared(mod)[1],3)\n  adj <- round(pool.r.squared(mod,T)[1],3)\n  new(\"miralm\", names=coef.names, coef=coef, se=se, pval=pvalues, rsq=rs,adjrs=adj, n=n)\n}\n\n\n# Then write an extension that translates midslm objects into texreg objects:\nextract.miralm <- function(model) {\n  tr <- createTexreg(\n    coef.names=model@names,\n    coef=model@coef,\n    se=model@se,\n    pvalues=model@pval,\n    gof.names=c(\"Num. obs.\", \"R$^2$\",\"Adj. R$^2$\"),\n    gof=c(model@n, model@rsq, model@adjrs),\n    gof.decimal=c(FALSE, TRUE, TRUE)\n  )\n  return(tr)\n}\n\nsetMethod(\"extract\", signature=className(\"miralm\"),\n          definition = extract.miralm)\n",
+    "created" : 1445970585699.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "442770484",
+    "id" : "578CC63",
+    "lastKnownWriteTime" : 1445970894,
+    "path" : "~/FOCAL/Rpackages/cpar/R/miralm.R",
+    "project_path" : "R/miralm.R",
+    "properties" : {
+    },
+    "relative_order" : 11,
+    "source_on_save" : false,
+    "type" : "r_source"
+}

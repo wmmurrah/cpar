@@ -1,0 +1,17 @@
+{
+    "contents" : "#' Intent to treat regression\n#' @param y outcome, default is outcome\n#' @param tx treatment assignment variable\n#' @param x covariates, default named covariates\n#' @param data data frame, default named df\n#' @author William Murrah\n#' @export\nittReg <- function(y=outcome,tx=tx.assign, x=covariates,\n                    data=df, ...){\n  # Creates an intent-to treat model with the lm function. The outcome is\n  # assumed to be continuous and is scaled in the analysis.\n  #\n  # Args:\n  #   y:         Character vector of length = 1 that is the column name of the\n  #              outcome variable.\n  #   tx.assign: Character vector of length = 1 that is the column name of the\n  #              treatment assignment variable (randomized variable).\n  #   x:         Character vector of any length that contains the column names\n  #              of the covariates.\n  #   data:      The data frame containing the variables referenced by the\n  #              previous arguments.\n  # Returns:\n  #   An object of class 'lm'.\n  # Create formula to be passed to 'lm'.\n  fml <- as.formula(paste('scale(',y,')', ' ~ ', tx, ' + ',\n                          paste(x, collapse=' + ')))\n\n  # Create lm model object.\n  mod <- lm(fml, data=df)\n  return(mod)\n}\n",
+    "created" : 1445792057097.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2642260659",
+    "id" : "EA1CBD63",
+    "lastKnownWriteTime" : 1445792141,
+    "path" : "~/FOCAL/Rpackages/cpar/R/ittReg.R",
+    "project_path" : "R/ittReg.R",
+    "properties" : {
+    },
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "type" : "r_source"
+}

@@ -1,0 +1,17 @@
+{
+    "contents" : "#' Creates an treatment on the treated model with the ivreg function from\n#' the AER package.\n#' @param y Character vector of length = 1 that is the column name of the\n#'         outcome variable.\n#' @param tr Character vector of length = 1 that is the column name of the\n#'         treatment received variable.\n#' @param iv   Character vector of length = 1 that is the column name of the\n#'         insrumental variable (e.g. treatment assignment).\n#' @param x Character vector of any length that contains the column names of\n#'         the covariates.\n#' @param data The data frame containing the variables referenced by the previous\n#'         arguments.\n#' @author William Murrah\n#' @export\n#' @return An object of class 'ivreg' containing elements of model objects similar\n#'   to the lm() function.\ntotReg  <- function(y=outcome,iv=instrument, tr=treatment, x=covariates,\n                    data=df, ...){\n  # Creates an treatment on the treated model with the ivreg function from\n  # the AER package.\n  #\n  # Args:\n  #\n  #   tr:\n  #   iv:   Character vector of length = 1 that is the column name of the\n  #         insrumental variable (e.g. treatment assignment).\n  #   x:    Character vector of any length that contains the column names of\n  #         the covariates.\n  #   data: The data frame containing the variables referenced by the previous\n  #         arguments.\n  # Returns:\n  #\n  require(AER)\n  # Create formula to be passed to 'ivreg'.\n  fml <- as.formula(paste('scale(',y,')', ' ~ ',tr, ' + ',\n                          paste(x, collapse=' + ')))\n  instruments <- as.formula(paste('~', paste(iv, collapse=' + '), ' + ',\n                                  paste(x, collapse=' +')))\n  # Create ivreg model object.\n  mod <- ivreg(fml, instruments, data=df)\n  return(mod)\n}\n",
+    "created" : 1445792251328.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2180784075",
+    "id" : "67756339",
+    "lastKnownWriteTime" : 1445792579,
+    "path" : "~/FOCAL/Rpackages/cpar/R/totReg.R",
+    "project_path" : "R/totReg.R",
+    "properties" : {
+    },
+    "relative_order" : 9,
+    "source_on_save" : false,
+    "type" : "r_source"
+}

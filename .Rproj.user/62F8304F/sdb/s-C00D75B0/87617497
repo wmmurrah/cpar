@@ -1,0 +1,18 @@
+{
+    "contents" : "#'mplus_get_file_dataset\n#' @param file\n#' @param datastr\n#' @author Thuy Nguyen, Muthen & Muthen\n#' @export\n\n##########################################################################\n#\n# mplus.get.file.dataset - supporting function for getting dataset in the file\n#\n# arguments:\n#\tfile - the quoted name of an existing GH5 file\n#   datastr - the name of the attribute\n#\n# eg. mplus.get.file.dataset('ex8.1.gh5','model_group_labels')\n#\nmplus_get_file_dataset <- function(file, datastr) {\n  if ( !(file.exists(file))) {\n    cstr <- paste(\"- file does not exist:\",file,\"\\n\")\n    stop(cstr)\n  }\n\n  gh5 <- h5dump(file, load=TRUE)\n\n  fid <- H5Fopen(file)\n  dtid <- H5Dopen(fid, datastr)\n\n  data <- H5Dread(dtid)\n\n  H5Dclose(dtid)\n  H5Fclose(fid)\n\n  return(data)\n}\n\nestimate_mode <- function(x) {\n  d <- density(x)\n  d$x[which.max(d$y)]\n}\n",
+    "created" : 1445792239194.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2847807051",
+    "id" : "87617497",
+    "lastKnownWriteTime" : 1445538167,
+    "path" : "~/FOCAL/Rpackages/cpar/R/mplus_get_file_dataset.R",
+    "project_path" : "R/mplus_get_file_dataset.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 6,
+    "source_on_save" : false,
+    "type" : "r_source"
+}

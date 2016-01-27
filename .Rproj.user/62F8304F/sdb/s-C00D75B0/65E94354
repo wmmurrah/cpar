@@ -1,0 +1,17 @@
+{
+    "contents" : "#' summaryR\n#' @param model from lm()\n#' @param type see hccm() in car package\n#' @author John Fox, tony91782 <https://gist.github.com/tony91782/954316>\n#' @export\nsummaryR <- function(model, type=c(\"hc3\", \"hc0\", \"hc1\", \"hc2\", \"hc4\"), ...){\n  ## ---------------------------------------------------------------------------------------- ##\n  ## Author: John Fox ##\n  ## Source: http://r.789695.n4.nabble.com/R-extend-summary-lm-for-hccm-td815004.html ##\n  ## Adapted by Tony Cookson. ##\n  ## -- Only Change Made: Changed the name of the function (unwisely maybe) ##\n  ## to summaryR from summaryHCCM.lm. I also changed the spelling of consistent ##\n  ## ---------------------------------------------------------------------------------------- ##\n\n  if (!require(car)) stop(\"Required car package is missing.\")\n\n  type <- match.arg(type)\n  V <- hccm(model, type=type)\n  sumry <- summary(model)\n  table <- coef(sumry)\n  table[,2] <- sqrt(diag(V))\n  table[,3] <- table[,1]/table[,2]\n  table[,4] <- 2*pt(abs(table[,3]), df.residual(model), lower.tail=FALSE)\n\n  sumry$coefficients <- table\n  p <- nrow(table)\n  hyp <- cbind(0, diag(p - 1))\n  sumry$fstatistic[1] <- linearHypothesis(model, hyp,white.adjust=type)[2,\"F\"]\n  sumry$type <- type\n\n  return(sumry)\n\n\n}\n",
+    "created" : 1445792249519.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1707612064",
+    "id" : "65E94354",
+    "lastKnownWriteTime" : 1444937922,
+    "path" : "~/FOCAL/Rpackages/cpar/R/summaryR.R",
+    "project_path" : "R/summaryR.R",
+    "properties" : {
+    },
+    "relative_order" : 8,
+    "source_on_save" : false,
+    "type" : "r_source"
+}

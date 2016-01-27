@@ -1,0 +1,17 @@
+{
+    "contents" : "lm.beta2 <- function(MOD){\n  # Based on lm.beta from QuantPsych\n  # but removing (weight) from model.\n  b <- summary(MOD)$coef[-1, 1]\n  w <- length(MOD$model)\n  sx <- sapply(MOD$model[-c(1,w)], sd)\n  sy <- sapply(MOD$model[1], sd)\n  beta <- b * sx/sy\n  return(beta)\n}",
+    "created" : 1445970549466.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3004999432",
+    "id" : "7C63A267",
+    "lastKnownWriteTime" : 1442241180,
+    "path" : "~/FOCAL/NSFscoreGaps/eclskRelImportance/R/lm.beta2.R",
+    "project_path" : null,
+    "properties" : {
+    },
+    "relative_order" : 10,
+    "source_on_save" : false,
+    "type" : "r_source"
+}

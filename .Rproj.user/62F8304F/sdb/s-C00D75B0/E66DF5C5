@@ -1,0 +1,18 @@
+{
+    "contents" : "#' View Mplus plots in GH5 file\n#' @param file\n#' @author Thuy Nguyen, Muthen & Muthen\n#' @export\nmplus_view_plots <- function(file) {\n  ##########################################################################\n  #\n  # mplus.view.plots - loads the file and lists all available plots\n  #\n  # arguments:\n  #    file - the quoted name of an existing GH5 file\n  #\n  # eg. mplus.view.plots('ex.gh5')\n  #\n  mplus.load(file)\n}\n",
+    "created" : 1445537932875.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2232591052",
+    "id" : "E66DF5C5",
+    "lastKnownWriteTime" : 1445538515,
+    "path" : "~/FOCAL/Rpackages/cpar/R/mplus_view_plots.R",
+    "project_path" : "R/mplus_view_plots.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 5,
+    "source_on_save" : false,
+    "type" : "r_source"
+}

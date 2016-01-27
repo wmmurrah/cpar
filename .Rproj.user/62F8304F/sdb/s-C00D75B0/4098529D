@@ -1,0 +1,18 @@
+{
+    "contents" : "#' supporting function for getting dataset\n#' @param file the quoted name of an existing GH5 file\n#' @param groupstr the name of the group for the attribute\n#' @param data sr the name of the attribute\n#' @author Thuy Nguyen, Muthen & Muthen\n#' @description\n#' mplus.get.group.dataset('ex8.1.gh5','bayesian_data','statements')\n#' @export\nmplus.get.group.dataset <- function(file, groupstr, datastr) {\n  if ( !(file.exists(file))) {\n    cstr <- paste(\"- file does not exist:\",file,\"\\n\")\n    stop(cstr)\n  }\n\n  gh5 <- h5dump(file, load=TRUE)\n\n  fid <- H5Fopen(file)\n  gid <- H5Gopen(fid, groupstr)\n  dtid <- H5Dopen(gid, datastr)\n\n  data <- H5Dread(dtid)\n\n  H5Dclose(dtid)\n  H5Gclose(gid)\n  H5Fclose(fid)\n\n  return(data)\n}\n\nestimate_mode <- function(x) {\n  d <- density(x)\n  d$x[which.max(d$y)]\n}\n",
+    "created" : 1445538539592.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2188301956",
+    "id" : "4098529D",
+    "lastKnownWriteTime" : 1445539194,
+    "path" : "~/FOCAL/Rpackages/cpar/R/mplus.get.group.dataset.R",
+    "project_path" : "R/mplus.get.group.dataset.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "type" : "r_source"
+}

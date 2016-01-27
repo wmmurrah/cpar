@@ -1,0 +1,17 @@
+{
+    "contents" : "#' Modified ls() function\n#' @export\n#'\n.ls.objects <- function (pos = 1, pattern, order.by,\n                         decreasing=FALSE, head=FALSE, n=5) {\n  napply <- function(names, fn) sapply(names, function(x)\n    fn(get(x, pos = pos)))\n  names <- ls(pos = pos, pattern = pattern)\n  obj.class <- napply(names, function(x) as.character(class(x))[1])\n  obj.mode <- napply(names, mode)\n  obj.type <- ifelse(is.na(obj.class), obj.mode, obj.class)\n  obj.prettysize <- napply(names, function(x) {\n    capture.output(format(utils::object.size(x), units = \"auto\")) })\n  obj.size <- napply(names, object.size)\n  obj.dim <- t(napply(names, function(x)\n    as.numeric(dim(x))[1:2]))\n  vec <- is.na(obj.dim)[, 1] & (obj.type != \"function\")\n  obj.dim[vec, 1] <- napply(names, length)[vec]\n  out <- data.frame(obj.type, obj.size, obj.prettysize, obj.dim)\n  names(out) <- c(\"Type\", \"Size\", \"PrettySize\", \"Rows\", \"Columns\")\n  if (!missing(order.by))\n    out <- out[order(out[[order.by]], decreasing=decreasing), ]\n  if (head)\n    out <- head(out, n)\n  out\n}\n\n#' @export\nlsos <- function(..., n=10) {\n  .ls.objects(..., order.by=\"Size\", decreasing=TRUE, head=TRUE, n=n)\n}\n\n",
+    "created" : 1445792144118.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2492166757",
+    "id" : "197AC29D",
+    "lastKnownWriteTime" : 1444938131,
+    "path" : "~/FOCAL/Rpackages/cpar/R/lsos.R",
+    "project_path" : "R/lsos.R",
+    "properties" : {
+    },
+    "relative_order" : 5,
+    "source_on_save" : false,
+    "type" : "r_source"
+}
