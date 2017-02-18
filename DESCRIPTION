@@ -1,10 +1,15 @@
 Package: cpar
 Type: Package
-Title: Contains functions for related to analysis of randomized controlled trials
+Title: Contains functions for organizing projects related to analysis of r
+       andomized controlled trials
 Version: 0.1
 Date: 2015-10-15
 Author: William Murrah <william.murrah@gmail.com>
-Maintainer:  William Murrah <william.murrah@gmail.com>
-Description: This package contains an assortment of functions created and collected to help Collect, Prepare, Analyze, and Report (CPAR) data related to field experiments (randomized controlled trials: RCT) in education and related fields.
+Maintainer: William Murrah <william.murrah@gmail.com>
+Description: This package contains an assortment of functions created and
+    collected to help Collect, Prepare, Analyze, and Report (CPAR) data related to
+    field experiments (randomized controlled trials: RCT) in education and related
+    fields.
 License: GPL3
 LazyData: TRUE
+RoxygenNote: 5.0.1
