@@ -3,9 +3,9 @@
 #' @param groupstr the name of the group for the attribute
 #' @param data sr the name of the attribute
 #' @author Thuy Nguyen, Muthen & Muthen
-#' @description
-#' mplus.get.group.dataset('ex8.1.gh5','bayesian_data','statements')
+#' @description mplus.get.group.dataset('ex8.1.gh5','bayesian_data','statements')
 #' @export
+#'
 mplus.get.group.dataset <- function(file, groupstr, datastr) {
   if ( !(file.exists(file))) {
     cstr <- paste("- file does not exist:",file,"\n")

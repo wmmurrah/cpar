@@ -1,5 +1,5 @@
 #' View Mplus plots in GH5 file
-#' @param file
+#' @param file file name
 #' @author Thuy Nguyen, Muthen & Muthen
 #' @export
 mplus_view_plots <- function(file) {

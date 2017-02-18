@@ -8,7 +8,7 @@
 # eg. mplus.load('ex.gh5')
 #
 #' mplus_load
-#' @param file
+#' @param file file name
 #' @author Thuy Nguyen, Muthen & Muthen
 #' @export
 mplus.load <- function(file) {

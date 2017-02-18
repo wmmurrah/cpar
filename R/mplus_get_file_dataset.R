@@ -1,6 +1,6 @@
-#'mplus_get_file_dataset
-#' @param file
-#' @param datastr
+#' mplus_get_file_dataset
+#' @param file file name (character)
+#' @param datastr data string
 #' @author Thuy Nguyen, Muthen & Muthen
 #' @export
 

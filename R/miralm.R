@@ -3,6 +3,7 @@
 #' @param n.obs Number of observations
 #' @author William Murrah
 #' @export
+#' @import texreg
 
 require(texreg)
 # First, create a class definition for your regression objects(midslm):
@@ -18,6 +19,7 @@ setClass(Class="miralm",
          )
 )
 
+#' @export
 miralm <- function(mira,n.obs=n) {
   require(mice)
   if (!is.mira(mira))
@@ -38,6 +40,7 @@ miralm <- function(mira,n.obs=n) {
 
 
 # Then write an extension that translates midslm objects into texreg objects:
+#' @export
 extract.miralm <- function(model) {
   tr <- createTexreg(
     coef.names=model@names,
