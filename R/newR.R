@@ -8,8 +8,7 @@
 newR <- function(filename,
          author = "William Murrah",
          subdir="R/", open=TRUE) {
-  template = paste(Sys.getenv('HOME'), '/Dropbox/Rtemplates/R_template.R',
-                   sep='')
+  template = 'R/R_template.R'
   filepath <- paste0(subdir, filename)
   lines = readLines(template)
   lines = sub('author.name', author, lines)
