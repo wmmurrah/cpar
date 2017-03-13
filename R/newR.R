@@ -8,9 +8,18 @@
 newR <- function(filename,
          author = "William Murrah",
          subdir="R/", open=TRUE) {
-  template = 'R/R_template.R'
+  lines = '#**************************************************************************
+# Title: function.name
+# Author: author.name
+# Description:
+# Created: Sys.time
+# R version: R.version.string
+# Directory: getwd
+#**************************************************************************
+# packages used -----------------------------------------------------------
+  '
   filepath <- paste0(subdir, filename)
-  lines = readLines(template)
+  #lines = readLines(template)
   lines = sub('author.name', author, lines)
   lines = sub('function.name', filename, lines)
   lines = sub('Sys.time', format(Sys.time(), '%A, %d %B %Y'), lines)
