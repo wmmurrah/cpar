@@ -1,9 +1,8 @@
-#' Intent to treat regression
+#' Create texreg object from mice mira object.
 #' @param mira mira object from `mice` package
 #' @param n.obs Number of observations
 #' @author William Murrah
 #' @export
-#' @import texreg
 
 require(texreg)
 # First, create a class definition for your regression objects(midslm):

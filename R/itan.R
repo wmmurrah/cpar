@@ -6,7 +6,7 @@ itan <- function(x, keys=NULL, digits=3, no.resp=4) {
   stopifnot(ncol(x)>1)
   if (is.null(keys)) keys <- rep("A", ncol(x))
   require(ltm)
-  raw.resp <- matrix(nr=ncol(x), nc=no.resp)
+  raw.resp <- matrix(nrow=ncol(x), ncol=no.resp)
   colnames(raw.resp) <- LETTERS[1:no.resp]
   for (i in 1:ncol(x)) {
     tmp <- table(x[,i])
